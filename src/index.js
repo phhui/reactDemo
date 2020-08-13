@@ -10,19 +10,6 @@ class Square extends React.Component {//2种写法
     );
   }
 }
-class SquareRow extends React.Component {//2种写法
-  render() {
-    return (
-      <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-        </div>
-    );
-  }
-}
 /* function Square(props){
   return (
     <button className="square" onClick={props.onClick()}>
@@ -37,10 +24,15 @@ class Board extends React.Component {
       squares: Array(225).fill(null),
       xIsNext: true,
     };
+    this.row=15;
+    this.col=15;
+    this.curIndex=0;
+    this.winner=null;
   }
 
   handleClick=(i)=>{
     console.log(i);
+    this.curIndex=i;
     const sq = this.state.squares.slice();
     sq[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState(prevState=>({squares:sq}));
@@ -53,69 +45,38 @@ class Board extends React.Component {
   renderSquare(i) {
     return (
       <Square
+        key={i}
         value={this.state.squares[i]}
         onClick={()=>this.handleClick(i)}
       />
     );
   }
-  renderRow(){
+  renderRow(n){
+    let item=[];
+    for(let i=0;i<this.col;i++){
+      item.push(this.renderSquare(n*this.col+i));
+    }
     return (
       <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-        </div>
+        {item}
+      </div>
     );
   }
   render() {
-    const winner = calculateWinner(this.state.squares);
     let status="aa";
-    if (winner) {
-      status = 'Winner: ' + winner;
+    if(checkWin(this.curIndex,this.state.squares)){
+      status = (this.state.xIsNext ? '电脑':'你')+"赢了";
     } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'Next player: ' + (this.state.xIsNext ? '你' : '电脑');
     }
-
+    let list=[];
+    for(let i=0;i<this.row;i++){
+        list.push(this.renderRow(i));
+    }
     return (
       <div>
         <div className="status">{status}</div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(5)}
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-          {this.renderSquare(9)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(10)}
-          {this.renderSquare(11)}
-          {this.renderSquare(12)}
-          {this.renderSquare(13)}
-          {this.renderSquare(14)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(10)}
-          {this.renderSquare(11)}
-          {this.renderSquare(12)}
-          {this.renderSquare(13)}
-          {this.renderSquare(14)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(10)}
-          {this.renderSquare(11)}
-          {this.renderSquare(12)}
-          {this.renderSquare(13)}
-          {this.renderSquare(14)}
-        </div>
+        {list}
       </div>
     );
   }
@@ -129,7 +90,7 @@ class Game extends React.Component {
           <Board />
         </div>
         <div className="game-info">
-          <div>{/* status */}</div>
+          <div>{"五子棋"}</div>
           <ol>{/* TODO */}</ol>
         </div>
       </div>
@@ -143,22 +104,77 @@ ReactDOM.render(
   <Game />,
   document.getElementById('root')
 );
-function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+function checkRow(n,square){
+  let row=(n-n%15)/15;
+  let col=n%15;
+  let start=row*15+Math.max(col-4,0);
+  let end=row*15+Math.max(col+4,14);
+  for(let i=start;i<end-4;i++){
+    let res="";
+    for(let j=i;j<i+5;j++)res+=square[j];
+    if(res==="XXXXX"||res==="OOOOO"){
+      return true;
     }
   }
-  return null;
+  return false;
+}
+function checkCol(n,square){
+  let row=(n-n%15)/15;
+  let col=n%15;
+  let start=Math.max(row-4,0)*15+col;
+  let end=Math.max(row+4,14)*15+col;
+  for(let i=start;i<end-4;i+=15){
+    let res="";
+    for(let j=i,k=0;k<5;k++,j+=15)res+=square[j];
+    if(res==="XXXXX"||res==="OOOOO"){
+      return true;
+    }
+  }
+  return false;
+}
+function checkBias(n,square){
+  let row=(n-n%15)/15;
+  let col=n%15;
+  let s=4;
+  let start=getStart(n,16);
+  let end=getEnd(n,16);
+  for(let i=start;i<end-4*16;i+=16){
+    let res="";
+    for(let j=i,k=0;k<5;k++,j+=16)res+=square[j];
+    if(res==="XXXXX"||res==="OOOOO"){
+      return true;
+    }
+  }
+  let start2=getStart(n,14);
+  let end2=getEnd(n,14);
+  for(let i=start2;i<end2-4*14;i+=14){
+    let res="";
+    for(let j=i,k=0;k<5;k++,j+=14)res+=square[j];
+    if(res==="XXXXX"||res==="OOOOO"){
+      return true;
+    }
+  }
+  return false;
+}
+function checkWin(n,square){
+  if(checkRow(n,square)||checkCol(n,square)||checkBias(n,square))return true;
+  return false;
+}
+function getStart(n,diff){
+  let s=4;
+  let start=n-diff*s;
+  while(start<0){
+    s--;
+    start=n-diff*s;
+  };
+  return start;
+}
+function getEnd(n,diff){
+  let s=4;
+  let end=n+diff*s;
+  while(end>225){
+    s--;
+    end=n+diff*s;
+  }
+  return end+1;
 }
