@@ -20,7 +20,7 @@ class Title extends React.Component {
       return (
         <div className="title" onClick={()=>{this.props.onClick()}}>
             <div className="title left" onClick={()=>this.props.onClick()}><Icons value={"Chevron-left"} /></div>
-            <div className="title center">{this.props.value}</div>
+            <div className="title center">{/*this.props.value*/}</div>
             <div className="title right"><Icons value={"Justify"} /></div>
         </div>
       );
