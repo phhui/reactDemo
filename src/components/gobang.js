@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import '../css/gobang.css';
 class Square extends React.Component {//2种写法
   render() {
     return (
@@ -82,7 +81,7 @@ class Board extends React.Component {
   }
 }
 
-class Game extends React.Component {
+export default class Gobang extends React.Component {
   render() {
     return (
       <div className="game">
@@ -102,10 +101,7 @@ class Game extends React.Component {
 
 // ========================================
 
-ReactDOM.render(
-  <Game />,
-  document.getElementById('root')
-);
+
 function checkRow(n,square){
   let row=(n-n%15)/15;
   let col=n%15;

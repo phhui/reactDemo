@@ -1,0 +1,29 @@
+.HeaderBox{
+    width:100%;
+    height:100%;
+}
+.title{
+    border-bottom: 1px solid #d4c7c7;
+    margin: 0px -1px 0px -1px;
+    width: 100%;
+    height:50px;
+    font-size: large;
+    font-weight: 1000;
+    text-align: center;
+    line-height:50px;
+}
+.title.left{
+    text-align: center;
+    float: left;
+    width: 5%;
+}
+.title.center{
+    float: left;
+    width: 90%;
+    overflow: hidden;
+}
+.title.right{
+    text-align: center;
+    float: right;
+    width: 5%;
+}
