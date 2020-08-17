@@ -26,7 +26,7 @@ export default class AppList extends Component {
 class ListItem extends Component{
     render(){
         return (
-        <div className="ListItem" onClick={this.props.onClick}>{this.props.value}</div>
+            <div className="ListItem" onClick={this.props.onClick}>{this.props.value}</div>
         );
     }
 }

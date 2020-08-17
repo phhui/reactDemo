@@ -1,0 +1,42 @@
+.ListBox{
+    width:100%;
+    height:100%;
+}
+.ListBox0{
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 8px;
+    bottom: 5px;
+    width:200px;
+    height:120px;
+}
+.ListItem{
+    border: 1px solid #d4c7c7;
+    border-radius: 8px;
+    margin: 0 -1px -1px 0;
+    width: auto;
+    height:30px;
+    margin: 5px;
+    text-align: center;
+    line-height:30px;
+}
+.ListItem0{
+    border: 1px solid #d4c7c7;
+    border-radius: 8px;
+    margin: 0 -1px -1px 0;
+    width: auto;
+    height:30px;
+    text-align: center;
+    line-height:30px;
+}
+.ListItem1{
+    background-color: white;
+    color: #666666;
+    border: 1px solid #d4c7c7;
+    border-radius: 8px;
+    margin: 0px 0px -1px 0px;
+    width: auto;
+    height:30px;
+    text-align: center;
+    line-height:30px;
+}

@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import AppList from './components/AppList';
-import Gobang from './components/gobang';
-import Todo from './todo/todo';
+import Gobang from './modules/gobang/gobang';
+import Todo from './modules/todo/Todo';
 import Header from './components/header';
 import './css/app.css';
 export default class App extends Component {

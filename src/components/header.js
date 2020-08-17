@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
-import {FaIcons,FaBeer} from 'react-icons/fa';
-import Icons from './Icons';
+import Icons from '../widdgets/Icons';
 import '../css/header.css';
 export default class Header extends Component {
     constructor(props){

@@ -1,0 +1,68 @@
+.TaskPanel{
+    left: 5px;
+    right: 5px;
+    background-color: white;
+    border-radius: 5px;
+    width:auto;
+    height:100px;
+    position: absolute;
+    bottom: 5px;
+    text-align: center;
+}
+.input{
+    float: left;
+    width:80%;
+    height:30px;
+    margin-left: 5px;
+    margin-top: 5px;
+    border-style:none;
+}
+.submitIcon{
+    float:right;
+    width:40px;
+    height: 50px;
+    color: #666666;
+    font-size: 30px;
+    padding-top: 5px;
+    padding-right:5px;
+    text-align: right;
+}
+.endDateList{
+    position: absolute;
+    border-radius: 8px;
+    bottom: 40px;
+    left:5px;
+    color:#000000;
+}
+.repeatList{
+    position: absolute;
+    border-radius: 8px;
+    bottom: 40px;
+    left:130px;
+    color:#000000;
+}
+.remindList{
+    position: absolute;
+    border-radius: 8px;
+    bottom: 40px;
+    left:250px;
+    color:#000000;
+}
+.Calendar{
+    position:absolute;
+    bottom:40px;
+}
+.setPanel{
+    position: absolute;
+    color:#666666;
+    width:100%;
+    font-size: 16px;
+    text-align: left;
+    bottom: 5px;
+    left:10px;
+}
+.setSpace{
+    float:left;
+    width:120px;
+    height:20px;
+}

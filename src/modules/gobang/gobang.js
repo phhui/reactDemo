@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/gobang.css';
+import './gobang.css';
 class Square extends React.Component {//2种写法
   render() {
     return (

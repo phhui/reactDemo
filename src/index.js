@@ -26,6 +26,6 @@ function listen(msg){
 }
 store.subscribe(listen);
 
-store.dispatch({type:"INCREMENT"});
-store.dispatch({type:"INCREMENT"});
-store.dispatch({type:"DECREMENT"});
+// store.dispatch({type:"INCREMENT"});
+// store.dispatch({type:"INCREMENT"});
+// store.dispatch({type:"DECREMENT"});
