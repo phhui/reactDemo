@@ -12,6 +12,7 @@ export default class App extends Component {
             content:<AppList onClick={(i)=>this.listClick(i)}/>
         };
         this.titleList=["learn demo","gobang","todo"];
+        this.contentList=[<AppList onClick={(i)=>this.listClick(i)}/>,<Gobang />,<Todo />];
     }
     headClick(){
         this.setState({
@@ -20,26 +21,10 @@ export default class App extends Component {
         });
     }
     listClick(i){
-        console.log(i);
-        let ct="";
-        switch(i){
-            case 0:
-                ct=<AppList onClick={(i)=>this.listClick(i)}/>;
-            break;
-            case 1:
-                ct=<Gobang />;
-            break;
-            case 2:
-                ct=<Todo />;
-            break;
-        }
         this.setState({
             title:this.titleList[i],
-            content:ct,
+            content:this.contentList[i],
         });
-    }
-    renderContent(){
-
     }
     render(){
         return (
