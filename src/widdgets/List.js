@@ -15,9 +15,9 @@ export default class List extends Component {
     renderItem(){
         let list=[];
         this.props.data.map((item,i)=>{
-            if(this.props.itemClass)list.push(<this.props.itemClass key={i} data={this.props.data} />);
-            else if(this.props.itemStyleClass!=null) list.push(<ListItem itemStyleClass={this.props.itemStyleClass} key={i} value={item} onClick={()=>this.props.onClick(i)}/>);
-            else list.push(<ListItem className={"ListItem"} key={i} value={item} onClick={()=>this.props.onClick(i)}/>);
+            if(this.props.itemClass)list.push(<this.props.itemClass key={i} data={item}  onClick={(param)=>this.props.onClick(i,item,param)}/>);
+            else if(this.props.itemStyleClass!=null) list.push(<ListItem itemStyleClass={this.props.itemStyleClass} key={i} data={item} onClick={()=>this.props.onClick(i,item)}/>);
+            else list.push(<ListItem className={"ListItem"} key={i} data={item} onClick={()=>this.props.onClick(i,item)}/>);
         });
         return list;
     }
@@ -36,7 +36,7 @@ export default class List extends Component {
 class ListItem extends Component{
     render(){
         return (
-            (this.props.itemStyleClass!=null)?<div style={this.props.itemStyleClass} onClick={this.props.onClick}>{this.props.value}</div>:<div className={this.props.className} onClick={this.props.onClick}>{this.props.value}</div>
+            (this.props.itemStyleClass!=null)?<div style={this.props.itemStyleClass} onClick={this.props.onClick}>{this.props.data}</div>:<div className={this.props.className} onClick={this.props.onClick}>{this.props.data}</div>
         );
     }
 }

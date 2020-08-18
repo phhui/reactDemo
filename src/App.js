@@ -21,6 +21,7 @@ export default class App extends Component {
         });
     }
     listClick(i){
+        console.log("applist click:"+i);
         this.setState({
             title:this.titleList[i],
             content:this.contentList[i],
@@ -30,17 +31,8 @@ export default class App extends Component {
         return (
             <div>
                 <Header title={this.state.title} onClick={()=>this.headClick()}/>
-                <Content content={this.state.content} />
+                {this.state.content}
             </div>
         );
     }
-}
-class Content extends Component{
-    render(){
-        return (
-            <div className="content">
-                {this.props.content}
-            </div>
-        );
-    };
 }

@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import '../css/AppList.css';
+import List from '../widdgets/List';
 export default class AppList extends Component {
     constructor(props){
         super(props);
@@ -18,7 +19,7 @@ export default class AppList extends Component {
     render(){
         return (
             <div className="AppListBox">
-                {this.renderItem()}
+                <List itemClass={ListItem} data={this.data} onClick={(i)=>this.props.onClick(i+1)}/>
             </div>
         );
     }
@@ -26,7 +27,7 @@ export default class AppList extends Component {
 class ListItem extends Component{
     render(){
         return (
-            <div className="ListItem" onClick={this.props.onClick}>{this.props.value}</div>
+            <div className="ListItem" onClick={this.props.onClick}>{this.props.data}</div>
         );
     }
 }

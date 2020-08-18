@@ -3,28 +3,64 @@
     height:100%;
 }
 .TodoItem{
-    border: 1px solid #999999;
+    background-color: #3a7c9b;
+    border: 1px solid #1c5a77;
     border-radius: 8px;
     margin: 5px;
     width: auto;
-    height:30px;
+    height:50px;
     text-align: center;
     line-height:30px;
 }
+.TodoItemIcon{
+    width:10%;
+    margin-left: 5px;
+    padding-top:8px;
+    line-height: 50px;
+}
+.TodoFinish{
+    width:35px;
+    text-align: left;
+}
+.TodoImportance{
+    margin-left: -10px;
+    padding-left: -10px;
+    width:35px;
+    text-align: right;
+}
+.TodoItemTitle{
+    margin:-1px 0px -1px 0px;
+    text-align: left;
+    line-height: 30px;
+}
+.TodoAttr{
+    color: #c3dceb;
+    margin-left:-5px;
+    margin-top: 30px;
+    width:auto;
+    text-align: left;
+    line-height: 20px;
+}
+.TodoAttrBox{
+    float:left;
+    width: 120px;
+    height:20px;
+}
 .TodoItemBtn{
-    width:30px;
+    width:10%;
     font-size: 30px;
     text-align: right;
     line-height: 30px;
 }
 .todoItemContent{
-    width:90%;
+    text-align: left;
+    width:80%;
 }
 .floatLeft{
     float: left;
 }
 .floatRight{
-    float: left;
+    float: right;
 }
 .FloatUi{
     position: absolute;
